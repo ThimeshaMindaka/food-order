@@ -1,16 +1,26 @@
 <?php include('partials/menu.php') ?>
+
  
 <div class="main-content" >
     <div class="wrapper">
         <h1>Add Admin</h1>
-        <br><br><br>
+        <br><br>
+
+        <?php
+        if(isset($_SESSION['add'])) //checking whether the session is set of lot
+        {
+            echo $_SESSION['add']; //display the session message
+            unset($_SESSION['add']); //remove session message 
+        }
+
+        ?>
+
         <form action="" method="POST">
 
         <table class="tbl-30">
             <tr>
                 <td>Full Name:</td>
-                <td><input type="text" name="full_name" placeholder="Enter Yours Name"></td>
-                
+                <td><input type="text" name="full_name" placeholder="Enter Yours Name"></td>        
             </tr>
             <tr>
                 <td>Username: </td>
@@ -53,14 +63,31 @@
             password = '$password'
 
         ";
-
-        //3.Execute Query and Save DATABASE
-        $conn = mysqli_connect('localhost', 'root','password') or die(mysqli_error()); //Database Connection 
-        $db_select = mysqli_select_db($conn,'food-order') or die(mysqli_error()); //Selecting Database
-
-        //$res = mysqli_query($conn, $sql) or die(mysqli_error());
+        //3.Executing query and saving data into database
+        $res = mysqli_query($conn, $sql) or die(mysqli_error());
          //quiry succesfull res will true,when quiry fail res false
         
+
+         //4.check whether the (query is executer) date is inserted or not and display appropriate messege
+         if($res==TRUE)
+         {
+             //data inserted
+             //echo "Data Inserted";
+             //create a session variable to display 
+             $_SESSION ['add'] = "Admin Added Successfully";
+             //redirect page TO manage admin
+             header("location: ".SITEURL.'admin/manage-admin.php');
+         }
+         else
+         {
+             //Fails to insert DATA
+             //echo "Failed to Insert Data";
+             //create a session variable to display 
+             $_SESSION ['add'] = "Failed to Add Admin";
+             //redirect page TO manage admin
+             header("location: ".SITEURL.'admin/add-admin.php');
+         }
+
         }
     
 ?>
