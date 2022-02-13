@@ -23,7 +23,7 @@
                 <td><input type="text" name="full_name" placeholder="Enter Yours Name"></td>        
             </tr>
             <tr>
-                <td>Username: </td>
+                <td>Username: </td> 
                 <td> <input type="text" name="username" placeholder="Your Username"></td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" name="submit" value="Add Admin" class="btn-secondary">
+                    <input type="submit" name="submit" value="Add Admin"class="btn-secondary">
                 </td>
             </tr>
         </table>
