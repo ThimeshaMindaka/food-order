@@ -64,7 +64,7 @@
 
         ";
         //3.Executing query and saving data into database
-        $res = mysqli_query($conn, $sql) or die(mysqli_error());
+        $res = mysqli_query($conn, $sql); //or die(mysqli_error());
          //quiry succesfull res will true,when quiry fail res false
         
 
